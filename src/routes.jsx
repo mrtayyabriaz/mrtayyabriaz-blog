@@ -4,6 +4,7 @@ import Layout from "./Layout.jsx";
 import Home from "./pages/Home.jsx";
 import Signup from "./pages/Signup.jsx";
 import AllPosts from "./pages/AllPosts.jsx";
+import { AuthLayout } from "./components";
 
 function ProjectRoutes() {
 
@@ -13,7 +14,11 @@ function ProjectRoutes() {
         <Route path="" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-        <Route path="posts" element={<AllPosts />} />
+        <Route path="posts" element={
+          <AuthLayout>
+            <AllPosts />
+          </AuthLayout>
+        } />
       </Route>
     </>)
   )

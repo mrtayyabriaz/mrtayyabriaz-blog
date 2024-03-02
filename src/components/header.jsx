@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 function Header() {
+  const LoginStatus = useSelector(state => state.LoginStatus)
   return (
     <nav className="navbar navbar-expand bg-body-tertiary">
       <div className="container-fluid">
@@ -14,12 +16,16 @@ function Header() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/signup">Signup</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/login">Login</NavLink>
-            </li>
+            {LoginStatus ?'':
+              <>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/signup">Signup</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/login">Login</NavLink>
+                </li>
+              </>
+            }
             <li className="nav-item">
               <NavLink className="nav-link" to="/posts">Posts</NavLink>
             </li>

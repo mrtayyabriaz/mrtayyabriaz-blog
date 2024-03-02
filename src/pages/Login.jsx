@@ -2,37 +2,41 @@ import React, { useState } from 'react'
 import '../style/style.min.css'
 import { useForm } from 'react-hook-form'
 import authService from '../appwrite/auth'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../store/authslice'
 
 function Login() {
   const [error, seterror] = useState('');
+  const [loginStatus, setloginStatus] = useState('');
 
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  // let storeData = useSelector(state => state.UserData)
+  // let loginStatus = useSelector(state => state.LoginStatus)
 
   const login_form = async (data) => {
     seterror('');
     console.warn('data: ');
     console.warn(data);
     try {
-      console.log('before data');
       const userData = await authService.login(data);
-      console.log('after data');
+
       if (userData) {
         const userData = await authService.getCurrentUser();
         dispatch(login(userData));
         console.log('Success Login: ', userData);
+        setloginStatus(true);
       } else {
         console.warn('login error');
       }
-    } catch (error) {
+    }
+    catch (error) {
       seterror(error.message);
     }
   }
   return (
     <><div className="container">
-
+      <div className="message">{loginStatus ? <div className='text-success'>Login Success</div> : ''}</div>
       <div className="login-form mx-auto">
         {error && <div className="ms-auto fw-bolder pointer" onClick={() => seterror(false)}>X</div>}
         {error && <div className="error">{error}</div>}
@@ -56,7 +60,11 @@ function Login() {
             Password:
             <input type="password" name="password" {...register('password')} />
           </label>
-          <button type="submit" className='btn btn-primary'>Login</button>
+          {loginStatus ?
+            <button type="submit" disabled className={`btn btn-success`}>Logged In</button>
+            :
+            <button type="submit" className='btn mybtn btn-primary'>Login</button>
+          }
         </form>
       </div>
     </div>
