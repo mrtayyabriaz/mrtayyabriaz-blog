@@ -3,13 +3,13 @@ import '../style/style.min.css'
 import { useForm } from 'react-hook-form'
 import authService from '../appwrite/auth'
 import { useDispatch } from 'react-redux'
-import {login} from '../store/authslice'
+import { login } from '../store/authslice'
 
 function Login() {
-  const { register, handleSubmit } = useForm();
-
   const [error, seterror] = useState('');
 
+  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
 
   const login_form = async (data) => {
     seterror('');
@@ -21,9 +21,9 @@ function Login() {
       console.log('after data');
       if (userData) {
         const userData = await authService.getCurrentUser();
-        useDispatch(login(userData));
-        console.log('Success Login: ',userData);
-      }else{
+        dispatch(login(userData));
+        console.log('Success Login: ', userData);
+      } else {
         console.warn('login error');
       }
     } catch (error) {
@@ -34,7 +34,7 @@ function Login() {
     <><div className="container">
 
       <div className="login-form mx-auto">
-        {error && <div className="ms-auto fw-bolder pointer" onClick={()=>seterror(false)}>X</div>}
+        {error && <div className="ms-auto fw-bolder pointer" onClick={() => seterror(false)}>X</div>}
         {error && <div className="error">{error}</div>}
 
         <form onSubmit={handleSubmit(login_form)}>
