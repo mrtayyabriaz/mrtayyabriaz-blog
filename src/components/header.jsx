@@ -5,7 +5,7 @@ function Header() {
   return (
     <nav className="navbar navbar-expand bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">Navbar</a>
+        <a className="navbar-brand" href="#">Tayyab Riaz</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -19,6 +19,9 @@ function Header() {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/login">Login</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/posts">Posts</NavLink>
             </li>
           </ul>
         </div>
