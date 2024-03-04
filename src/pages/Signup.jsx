@@ -27,8 +27,8 @@ function Signup() {
   }
   return (
     <><div className="container">
-
       <div className="login-form mx-auto">
+      <h1 className='mb-3'>Signup</h1>
 
         {error && <div className="error">{error}</div>}
 

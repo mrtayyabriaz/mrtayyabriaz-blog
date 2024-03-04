@@ -27,9 +27,10 @@ const AllPosts = () => {
   }, []);
 
   return (
-    <>
-      <h1>All Posts</h1>
-      <div className="row row-cols-1 row-cols-sm-3 g-4 mx-2">
+    <><div className="container">
+
+      <h1>Posts</h1>
+      <div className="row row-cols-1 row-cols-sm-3 g-4 m-2">
 
         {posts ? posts.map((post) => {
           return (
@@ -38,7 +39,8 @@ const AllPosts = () => {
             </div>
           );
         })
-          : null}
+        : null}
+        </div>
       </div>
     </>
   );

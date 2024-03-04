@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import RTE from '../components/RTE'
+import RTE from './RTE'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -12,9 +12,9 @@ export default function PostEditor({ post }) {
 
   const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
     defaultValues: {
-      title: post ? post.tile : '',
-      content: post ? post.content : '',
-      slug: post ? post.slug : '',
+      title: post?.tile || '',
+      content: post?.content || '',
+      slug: post?.slug || ''
     }
   });
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ export default function PostEditor({ post }) {
     else {
 
       console.log('Data:', data);
-      const file = data.featuredimage[0] ? service.uploadFile(data.featuredimage[0])
+      const file = data.featuredimage[0] ? service.uploadFile(data.featuredimage[0], data.slug)
         .then((file) => {
 
           if (file) {
@@ -80,6 +80,7 @@ export default function PostEditor({ post }) {
   //==================== slug  ( END )  =======================
 
   useEffect(() => {
+    console.log('posteditor::', post);
     const subscrription = watch((value, { name }) => {
       if (name === 'title') {
         setValue('slug', slugTransform(value.title));
@@ -89,9 +90,16 @@ export default function PostEditor({ post }) {
   }, [watch, slugTransform, setValue])
 
 
+
+
+
+
+
+
   return (
     <> <div className="container">
       <div className="login-form mx-auto">
+        <h1>Create Post</h1>
         {error && <div className="ms-auto fw-bolder pointer" onClick={() => seterror(false)}>X</div>}
         {error && <div className="error">{error}</div>}
 
@@ -120,7 +128,7 @@ export default function PostEditor({ post }) {
               name="featuredimage" {...register('featuredimage')} />
           </label>
           {post && <div>
-            <img src={service.getFilePreview(post.featuredimage)} alt={post.title} />
+            <img className='w-100' src={service.getFile(post.featuredimage)} alt={post.title} />
           </div>}
           <label>
             Status:
@@ -129,7 +137,7 @@ export default function PostEditor({ post }) {
               <option value="active">Active</option>
             </select>
           </label>
-          <button type="submit">{post ? 'Create' : 'Update'}</button>
+          <button type="submit" className='btn mybtn btn-primary'>{post ? 'Create' : 'Update'}</button>
         </form>
       </div>
     </div>

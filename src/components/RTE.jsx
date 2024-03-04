@@ -11,7 +11,7 @@ function RTE({ name, control, label, defaultvalue = '' }) {
         name={name || 'content'}
         control={control}
         defaultValue={defaultvalue}
-        render={({ field: { onchange } }) => (
+        render={({ field: { onChange } }) => (
           <Editor
             initialValue={defaultvalue}
             apiKey='7kpbg9vbxv3z6rqzra0gax05ferdfgadrguhiose1wv2sjde'
@@ -29,7 +29,7 @@ function RTE({ name, control, label, defaultvalue = '' }) {
                 'alignright alignjustify | bullist numlist outdent indent | ' +
                 'removeformat' 
             }}
-            onEditorChange={onchange}
+            onEditorChange={onChange}
             onBlur={(event, editor) => {
               console.log('Blur.', editor);
             }}

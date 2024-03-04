@@ -5,7 +5,10 @@ import Home from "./pages/Home.jsx";
 import Signup from "./pages/Signup.jsx";
 import AllPosts from "./pages/AllPosts.jsx";
 import { AuthLayout } from "./components";
-import PostEditor from "./pages/PostEditor.jsx";
+import PostEditor from "./components/PostEditor.jsx";
+import { Post } from "./pages/Post.jsx";
+import Edit from "./pages/Edit.jsx";
+import { Create } from "./pages/Create.jsx";
 
 function ProjectRoutes() {
 
@@ -22,14 +25,24 @@ function ProjectRoutes() {
             <Signup />
           </AuthLayout>
         } />
+        <Route path="post/:slug" element={
+          <AuthLayout authantication={false}>
+            <Post />
+          </AuthLayout>
+        } />
         <Route path="posts" element={
-          <AuthLayout authantication>
+          <AuthLayout authantication={false}>
             <AllPosts />
           </AuthLayout>
         } />
         <Route path="create" element={
           <AuthLayout authantication>
-            <PostEditor />
+            <Create />
+          </AuthLayout>
+        } />
+        <Route path="edit/:slug" element={
+          <AuthLayout authantication={false}>
+            <Edit />
           </AuthLayout>
         } />
       </Route>

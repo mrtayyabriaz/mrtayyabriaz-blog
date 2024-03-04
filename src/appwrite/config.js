@@ -73,7 +73,6 @@ export class Service {
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug
-
       )
     } catch (error) {
       console.log("Appwrite serive :: getPost :: error", error);
@@ -96,11 +95,12 @@ export class Service {
 
   // file upload service
 
-  async uploadFile(file) {
+  async uploadFile(file,theId) {
     try {
       return await this.bucket.createFile(
         conf.appwriteBucketId,
-        ID.unique(),
+        // ID.unique(),
+        theId,
         file
       )
     } catch (error) {
@@ -122,11 +122,11 @@ export class Service {
     }
   }
 
-  getFilePreview(fileId) {
-    return this.bucket.getFilePreview(
+  getFile(fileId) {
+    return  this.bucket.getFilePreview(
       conf.appwriteBucketId,
       fileId
-    )
+    );
   }
 }
 

@@ -17,32 +17,32 @@ function Header() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-100">
             <li className="nav-item">
               <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
-            {LoginStatus ? <>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/posts">Posts</NavLink>
               </li>
+            {LoginStatus ? <>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/create">Write</NavLink>
               </li>
-              <li className="nav-item">
+              <li className="nav-item ms-auto">
                 <NavLink className='nav-link btn mybtn text-white mx-2' onClick={() => {
                   dispatch(logout())
-                  authService.logout();
-                  navigate('/login');
+                  authService.logout()
+                  navigate('/')
                 }}>logout</NavLink>
               </li>
             </>
               :
               <>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/signup">Signup</NavLink>
+                <li className="nav-item ms-auto">
+                  <NavLink className="nav-link text-white btn btn-primary mybtn me-2" to="/signup">Signup</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/login">Login</NavLink>
+                  <NavLink className="nav-link text-white btn btn-success mybtn" to="/login">Login</NavLink>
                 </li>
               </>
             }
