@@ -9,7 +9,7 @@ function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  return (
+  return (<>
     <nav className="navbar navbar-expand bg-body-tertiary p-fixed">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">Tayyab Riaz</a>
@@ -21,9 +21,9 @@ function Header() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/posts">Posts</NavLink>
-              </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/posts">Posts</NavLink>
+            </li>
             {LoginStatus ? <>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/create">Write</NavLink>
@@ -50,6 +50,7 @@ function Header() {
         </div>
       </div>
     </nav>
+  </>
   );
 }
 

@@ -137,7 +137,9 @@ export default function PostEditor({ post }) {
               <option value="active">Active</option>
             </select>
           </label>
-          <button type="submit" className='btn mybtn btn-primary'>{post ? 'Create' : 'Update'}</button>
+          <button type="submit" className='mybtn mybtn rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black'>
+            {post ? 'Create' : 'Update'}
+          </button>
         </form>
       </div>
     </div>

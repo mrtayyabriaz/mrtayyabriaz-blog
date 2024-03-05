@@ -1,4 +1,6 @@
 import ProjectRoutes from './routes'
+import './index.css'
+
 
 // import Button from 'react-bootstrap/Button';
 // or less ideally

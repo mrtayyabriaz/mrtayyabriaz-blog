@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import service from "../appwrite/config";
-import {Card} from "../components";
+import { Card } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { saveposts } from "../store/authslice";
 
@@ -27,20 +27,19 @@ const AllPosts = () => {
   }, []);
 
   return (
-    <><div className="container">
+    <>
 
-      <h1>Posts</h1>
-      <div className="row row-cols-1 row-cols-sm-3 g-4 m-2">
+      <h1 className="">Posts</h1>
+      <div className="pl-5 w-full grid grid-cols-3">
 
         {posts ? posts.map((post) => {
           return (
-            <div key={post.$id}>
+            <div className="m-2 w-[300px] rounded-md border" key={post.$id}>
               <Card {...post} />
             </div>
           );
         })
-        : null}
-        </div>
+          : null}
       </div>
     </>
   );
