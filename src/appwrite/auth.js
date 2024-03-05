@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import conf from '../conf/conf.js';
 import { Client, Account, ID } from "appwrite";
 
@@ -50,6 +51,7 @@ export class AuthService {
 
     try {
       await this.account.deleteSessions();
+      useNavigate('/');
     } catch (error) {
       console.log("Appwrite serive :: logout :: error", error);
     }

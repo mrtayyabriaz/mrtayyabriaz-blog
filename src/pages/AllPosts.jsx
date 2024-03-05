@@ -29,8 +29,8 @@ const AllPosts = () => {
   return (
     <>
 
-      <h1 className="">Posts</h1>
-      <div className="pl-5 w-full grid grid-cols-3">
+      <h1 className="text-xl font-bold ml-2 mt-3">Posts</h1>
+      <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3 place-items-center">
 
         {posts ? posts.map((post) => {
           return (

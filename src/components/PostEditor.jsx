@@ -99,7 +99,7 @@ export default function PostEditor({ post }) {
   return (
     <> <div className="container">
       <div className="login-form mx-auto">
-        <h1>Create Post</h1>
+        <h1 className='text-xl font-bold ml-2 mb-3'>Create Post</h1>
         {error && <div className="ms-auto fw-bolder pointer" onClick={() => seterror(false)}>X</div>}
         {error && <div className="error">{error}</div>}
 

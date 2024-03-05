@@ -38,7 +38,7 @@ export const Post = () => {
             className="btn btn-success"
             onClick={() => navigate(`/edit/${post.$id}`)}>Edit</button>
         </div>
-        <h2>{post.title}</h2>
+        <h2 className='text-green-600 font-bold font-large h-10'>{post.title}</h2>
         <div><img src={theFile.href} className='w-100' alt={post.title} />
         </div>
         <p>{parse(post.content)}</p>
