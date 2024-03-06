@@ -1,3 +1,10 @@
+/**
+ * The AuthLayout component in JavaScript React checks the authentication status and redirects to the
+ * login page if not authenticated.
+ * @returns The `AuthLayout` component is returning either a "loading..." message or the `children`
+ * components based on the `loader` state. If `loader` is true, it will display "loading...", otherwise
+ * it will render the `children` components.
+ */
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

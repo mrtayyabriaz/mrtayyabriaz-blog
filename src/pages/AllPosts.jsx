@@ -29,12 +29,12 @@ const AllPosts = () => {
   return (
     <>
 
-      <h1 className="text-2xl font-bold ml-3 mt-3">Posts</h1>
-      <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3 place-items-center mb-6">
+      <h1 className="font-bold mt-3 ml-3 text-2xl">Posts</h1>
+      <div className="mb-6 w-full grid place-items-center sm:grid-cols-2 lg:grid-cols-3">
 
         {posts ? posts.map((post) => {
           return (
-            <div className="m-2 w-[300px] rounded-md border" key={post.$id}>
+            <div className="border rounded-md m-2 my-4 transition w-[300px] hover:shadow-lg hover:shadow-gray-400 hover:scale-105" key={post.$id}>
               <Card {...post} />
             </div>
           );

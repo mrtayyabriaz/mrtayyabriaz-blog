@@ -12,21 +12,19 @@ export default function Edit() {
   useEffect(() => {
     if (slug) {
       service.getPost(slug)
-        .then((post) => {
-          setPost(post);
-          console.log('container post::', post);
+        .then((p) => {
+          console.log('container post::', p);
+          setPost(p)
         })
     } else {
       navigate('/')
     }
-    console.log('slug', slug);
-    console.log('edit post::', post);
   }, [slug])
 
 
   return (
     <>
-      <PostEditor post={post} />
+      <PostEditor post={post}/>
     </>
   )
 }

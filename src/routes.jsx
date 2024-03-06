@@ -9,6 +9,7 @@ import PostEditor from "./components/PostEditor.jsx";
 import { Post } from "./pages/Post.jsx";
 import Edit from "./pages/Edit.jsx";
 import { Create } from "./pages/Create.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 function ProjectRoutes() {
 
@@ -16,6 +17,7 @@ function ProjectRoutes() {
     createRoutesFromElements(<>
       <Route path="/" element={<Layout />}>
         <Route path="" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
         <Route path="login" element={
           <AuthLayout authantication={false}>
             <Login />

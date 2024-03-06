@@ -4,5 +4,8 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"docwriter.progress.trackFunctions": true,
+		"docwriter.style": "JSDoc"
+	}
 }

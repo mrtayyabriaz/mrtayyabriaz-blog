@@ -13,7 +13,7 @@ export default function PostEditor({ post }) {
 
   const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
     defaultValues: {
-      title: post?.tile || '',
+      title: post?.title || '',
       content: post?.content || '',
       slug: post?.slug || ''
     }
@@ -21,11 +21,21 @@ export default function PostEditor({ post }) {
   const navigate = useNavigate();
   const userData = useSelector(state => state.UserData);
 
+  useEffect(() => {
+      console.log('post:::', post)
+      setValue("title", post?.title);
+      slugTransform(post?.title || '')
+      setValue("content", post?.content);
+  }, [post])
+  
+
+
   const onSubmit = async (data) => {
 
 
     //==================== Edit post ( START ) ==================
     if (post) {
+      console.log('----- Editing Post -----');
       const file = data.image[0] ? service.uploadFile(data.image[0]) : null;
 
       if (file) {
@@ -85,6 +95,7 @@ export default function PostEditor({ post }) {
   //==================== slug  ( END )  =======================
 
   useEffect(() => {
+    // watch slug
     console.log('posteditor::', post);
     const subscrription = watch((value, { name }) => {
       if (name === 'title') {
@@ -162,7 +173,7 @@ export default function PostEditor({ post }) {
         }
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>
-            Title:
+            Title:{post?.title}
             <input type="text" name="title" {...register('title', {
               required: true,
               maxLength: 50,
@@ -195,7 +206,7 @@ export default function PostEditor({ post }) {
             </select>
           </label>
           <button type="submit" className='mybtn mybtn rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black'>
-            {post ? 'Create' : 'Update'}
+            {post ? 'Update' : 'Create'}
           </button>
         </form>
       </div>

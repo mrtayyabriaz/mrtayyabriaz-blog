@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import parse from 'html-react-parser'
 import service from '../appwrite/config'
+import Button from './Button'
 
 const Card = ({ title, content, $updatedAt, $id }) => {
   const navigate = useNavigate();
@@ -25,13 +26,13 @@ const Card = ({ title, content, $updatedAt, $id }) => {
           <p className="mt-3 text-sm text-gray-600">
             {parse(content.length > 60 ? updatecontent(content) : content)}
           </p>
-          <button
+          <Button
             type="button"
             className="mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             onClick={() => navigate(`/post/${$id}`)}
           >
             Read More
-          </button>
+          </Button>
         </div>
         <div className="bg-gray-200 rounded-b-md px-2">
           Updated: {$updatedAt.slice(0, 10) + ' ' + $updatedAt.slice(12, 16)}

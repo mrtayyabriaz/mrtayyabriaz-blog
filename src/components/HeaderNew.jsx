@@ -158,7 +158,7 @@ export function HeaderNew() {
                       to='/'
                       onClick={() => {
                         dispatch(logout())
-                         AuthService.logout()
+                        AuthService.logout()
                         // navigate('/')
                       }}
                       type="button"
