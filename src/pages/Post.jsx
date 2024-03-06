@@ -41,7 +41,7 @@ export const Post = () => {
         <h2 className='text-green-600 font-bold font-large h-10'>{post.title}</h2>
         <div><img src={theFile.href} className='w-100' alt={post.title} />
         </div>
-        <p>{parse(post.content)}</p>
+        <div>{parse(post.content)}</div>
       </div>
     </>
   )
